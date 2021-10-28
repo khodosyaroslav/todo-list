@@ -1,12 +1,17 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const Header = (props) => {
+
+// всегда деструктурируй пропсы сразу в параметрах компонента
+// const Header = ({currentText, setText, getTask, removeSelected}) => {
+// сначала идут переменные потом функции при деструктуризации (просто такая конвенция)
+  const Header = (props) => {
     return (
         <>
             <Heading>
                 <InputText placeholder="What needs to be done?" onChange={props.setText} value={props.currentText} />
 
+                {/* Если кнопка переиспользуется как правило ее делают компонентом и помещают в components/ */}
                 <AddButton onClick={props.getTask}>
                     Add
                 </AddButton>
@@ -17,6 +22,24 @@ const Header = (props) => {
         </>
     );
 }
+
+// не пиши return когда не пишешь ничего в теле функций
+// пиши так:
+
+// const Header = (props) => (
+//       <>
+//           <Heading>
+//               <InputText placeholder="What needs to be done?" onChange={props.setText} value={props.currentText} />
+
+//               <AddButton onClick={props.getTask}>
+//                   Add
+//               </AddButton>
+//               <RemoveButton onClick={props.removeSelected}>
+//                   Remove
+//               </RemoveButton>
+//           </Heading>
+//       </>
+//   );
 
 const Heading = styled.div`
   height: 15%;
