@@ -1,22 +1,20 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const Header = (props) => {
-    return (
-        <>
-            <Heading>
-                <InputText placeholder="What needs to be done?" onChange={props.setText} value={props.currentText} />
+const Header = ({ setText, currentText, setTask, removeSelected }) => (
+  <>
+    <Heading>
+      <InputText placeholder="What needs to be done?" onChange={setText} value={currentText} />
 
-                <AddButton onClick={props.getTask}>
-                    Add
-                </AddButton>
-                <RemoveButton onClick={props.removeSelected}>
-                    Remove
-                </RemoveButton>
-            </Heading>
-        </>
-    );
-}
+      <AddButton onClick={setTask}>
+        Add
+      </AddButton>
+      <RemoveButton onClick={removeSelected}>
+        Remove
+      </RemoveButton>
+    </Heading>
+  </>
+);
 
 const Heading = styled.div`
   height: 15%;

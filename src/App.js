@@ -1,38 +1,44 @@
 import './App.css';
 import React, { useState } from 'react';
 import styled from 'styled-components';
+
 import Header from './components/Header';
 
 function App() {
   const [currentText, changeCurrentText] = useState('');
-  const [listOfTodos, changeListOfTodos] = useState(['Buy milk', 'Get eggs', 'Go to work', 'And more...', ]);
+  const [listOfTodos, changeListOfTodos] = useState([
+    'Buy milk',
+    'Get eggs',
+    'Go to work',
+    'And more...',
+  ]);
   const [listOfSelected, changeListOfSelected] = useState([]);
 
-  const getTask = () => {
+  const setTask = () => {
     if (currentText.length > 0 && !listOfTodos.includes(currentText)) {
       changeListOfTodos([...listOfTodos, currentText]);
       changeCurrentText("");
     } else {
       changeCurrentText("");
     }
-  }
+  };
 
   const setText = (e) => {
     changeCurrentText(e.target.value);
-  }
+  };
 
   const handleTaskSelected = (e) => {
-    if(!listOfSelected.includes(e.target.value)){
+    if (!listOfSelected.includes(e.target.value)) {
       changeListOfSelected([...listOfSelected, e.target.value]);
     } else {
-      const arr = listOfSelected.filter(el => el !== e.target.value);
+      const arr = listOfSelected.filter((el) => el !== e.target.value);
       changeListOfSelected(arr);
     }
-    
-  } 
+
+  };
 
   const removeSelected = () => {
-    const arr = listOfTodos.filter(el => !listOfSelected.includes(el));
+    const arr = listOfTodos.filter((el) => !listOfSelected.includes(el));
     changeListOfTodos(arr);
   }
 
@@ -42,25 +48,25 @@ function App() {
       <MainBlock>
 
         <Header setText={setText}
-          currentText={currentText} 
-          getTask={getTask} 
+          currentText={currentText}
+          setTask={setTask}
           removeSelected={removeSelected} />
-        
+
         <ListOfTasks>
-          {
-            listOfTodos.map(item => (
-              <Task>
-                <InputCheckBox name="chkbx" 
-                  value={item} 
-                  onChange={handleTaskSelected} 
-                  checked={listOfSelected.includes(item)} />
+          {listOfTodos.map(item => (
+            <Task>
+              <InputCheckBox name="chkbx"
+                value={item}
+                onChange={handleTaskSelected}
+                checked={listOfSelected.includes(item)} 
+              />
 
-                <TaskText selected={listOfSelected.includes(item)}>
-                  {item}
-                </TaskText>
+              <TaskText selected={listOfSelected.includes(item)}>
+                {item}
+              </TaskText>
 
-              </Task>
-            ))}
+            </Task>
+          ))}
         </ListOfTasks>
 
       </MainBlock>
@@ -113,8 +119,9 @@ const InputCheckBox = styled.input.attrs({ type: 'checkbox' })`
 const TaskText = styled.div`
   margin-right:auto;
   margin-left: 10px;
-  ${({selected}) => 
-    selected && `
+  ${({ selected }) =>
+    selected && 
+    `
       text-decoration: line-through;
     `
   }
