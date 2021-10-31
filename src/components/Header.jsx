@@ -12,6 +12,7 @@ const Header = ({ setText, currentText, setTask, removeSelected }) => (
       <RemoveButton onClick={removeSelected}>
         Remove
       </RemoveButton>
+      
     </Heading>
   </>
 );
