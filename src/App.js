@@ -86,10 +86,12 @@ function App() {
 const AppWrapper = styled.div`
   min-height: 100vh;
   width: 100%;
-  background: linear-gradient(blue, pink);
+  //background: linear-gradient(blue, pink);
   display: flex;
   justify-content: center;
   align-items: center;
+
+  background: -webkit-linear-gradient(top, rgb(8, 0, 0) 0%, rgb(39, 29, 71) 25%, rgb(118, 118, 180) 65%, rgb(200, 216, 255) 98%);
 `;
 
 const MainBlock = styled.div`
