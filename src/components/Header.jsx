@@ -2,19 +2,17 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Header = ({ setText, currentText, setTask, removeSelected }) => (
-  <>
-    <Heading>
-      <InputText placeholder="What needs to be done?" onChange={setText} value={currentText} />
+  <Heading>
+    <InputText placeholder="What needs to be done?" onChange={setText} value={currentText} />
 
-      <AddButton onClick={setTask}>
-        Add
-      </AddButton>
-      <RemoveButton onClick={removeSelected}>
-        Remove
-      </RemoveButton>
-      
-    </Heading>
-  </>
+    <AddButton onClick={setTask}>
+      Add
+    </AddButton>
+    <RemoveButton onClick={removeSelected}>
+      Remove
+    </RemoveButton>
+
+  </Heading>
 );
 
 const Heading = styled.div`
@@ -46,14 +44,14 @@ const AddButton = styled.button`
   font-size: 20px;
 `
 const RemoveButton = styled.button`
-background: #B0C4B1;
-height: 60%;
-width: 100px;
-border-radius: 8px;
-margin-right: 10px;
-color: #4A5759;
-cursor: pointer;
-font-size: 20px;
+  background: #B0C4B1;
+  height: 60%;
+  width: 100px;
+  border-radius: 8px;
+  margin-right: 10px;
+  color: #4A5759;
+  cursor: pointer;
+  font-size: 20px;
 `
 
 export default Header;

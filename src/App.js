@@ -56,11 +56,11 @@ function App() {
           currentText={currentText}
           setTask={setTask}
           removeSelected={removeSelected} />
-          
+
         <ListOfTasks>
-          
+
           <ListOfImportant listOfImportant={listOfImportant}
-            handleTaskSelected={handleTaskSelected} 
+            handleTaskSelected={handleTaskSelected}
             listOfSelected={listOfSelected}
             listOfTodos={listOfTodos}
             changeListOfTodos={changeListOfTodos}
@@ -86,7 +86,6 @@ function App() {
 const AppWrapper = styled.div`
   min-height: 100vh;
   width: 100%;
-  //background: linear-gradient(blue, pink);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -106,8 +105,8 @@ const ListOfTasks = styled.div`
   overflow-y: auto;
   overflow-x: hidden;
   height: 85%;
-  border-bottom-right-radius: 1em;
-  border-bottom-left-radius: 1em;
+  border-bottom-right-radius: 30px;
+  border-bottom-left-radius: 30px;
 `;
 
 export default App;

@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 
 const TaskText = ({ listOfTodos, changeListOfTodos, item, ind, listOfSelected }) => {
-
     const [editMode, changeEditMode] = useState(false);
     const [editableTask, changeEditableTask] = useState('');
     const [indexEditable, changeIndexEditable] = useState(-1);
@@ -44,7 +43,6 @@ const TaskText = ({ listOfTodos, changeListOfTodos, item, ind, listOfSelected })
                     {item}
                 </Text>
             )}
-
         </>
     );
 }
@@ -56,8 +54,7 @@ const Text = styled.div`
         selected &&
         `
       text-decoration: line-through;
-    `
-    }
+    `}
 `;
 
 const TaskEdit = styled.div`
