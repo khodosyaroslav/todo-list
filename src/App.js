@@ -1,21 +1,15 @@
 import './App.css';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
 import Header from './components/Header';
 import ListOfImportant from './components/ListOfImportant';
 import ListOfTodos from './components/ListOfTodos';
+import axios from 'axios';
 
 function App() {
   const [currentText, changeCurrentText] = useState('');
-  const [listOfTodos, changeListOfTodos] = useState([
-    'Go to work',
-    'Read book',
-    'Make a dinner',
-    'Watch videos',
-    'Listen a podcast',
-    'And more...',
-  ]);
+  const [listOfTodos, changeListOfTodos] = useState([]);
   const [listOfSelected, changeListOfSelected] = useState([]);
   const [listOfImportant, changeListOfImportant] = useState([]);
 
@@ -46,6 +40,23 @@ function App() {
     const arr = listOfTodos.filter((el) => !listOfSelected.includes(el));
     changeListOfTodos(arr);
   };
+
+  const fetchPosts = async () => {
+    const response = await axios.get("https://jsonplaceholder.typicode.com/todos", {
+      params: {
+        _limit: 66
+      }
+    });
+    const todos = [];
+    response.data.map((el) => {
+      todos.push(el.title);
+    })
+    changeListOfTodos(todos);
+  }
+
+  useEffect(() => {
+    fetchPosts();
+  }, []);
 
   return (
     <AppWrapper>
